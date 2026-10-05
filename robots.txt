@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mh-online-quran.vercel.app/sitemap.xml
