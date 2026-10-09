@@ -13,8 +13,8 @@ publish_mode: editorial_workflow
 
 collections:
   - name: "blog_posts"
-    label: "Blog Posts"
-    label_singular: "Blog Post"
+    label: "Blog & Articles"
+    label_singular: "Article"
     folder: "posts"
     create: true
     delete: true
