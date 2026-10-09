@@ -18,7 +18,7 @@ async function copyPublic(from, to) {
     const src = path.join(from, item.name);
     const dest = path.join(to, item.name);
     if (item.isDirectory()) await copyPublic(src, dest);
-    else if (!item.name.endsWith(".md") || item.name === "README.md") await fs.copyFile(src, dest);
+    else await fs.copyFile(src, dest);
   }
 }
 await copyPublic(root, out);
