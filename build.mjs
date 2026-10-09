@@ -85,7 +85,6 @@ for (const post of posts) {
 
 const sitemapPath = path.join(out, "sitemap.xml");
 let sitemap = await fs.readFile(sitemapPath, "utf8").catch(() => `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"></urlset>`);
-sitemap = sitemap.replace(/\s*<url>\s*<loc>${site.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\/articles\/[^<]+<\/loc>[\s\S]*?<\/url>/g, "");
 for (const post of posts) {
   const url = `${site}/articles/${post.slug}.html`;
   if (sitemap.includes(`<loc>${url}</loc>`)) continue;
