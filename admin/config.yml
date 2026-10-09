@@ -2,8 +2,8 @@ backend:
   name: github
   repo: muhammadhamda7432-afk/ONLINE-QURAN
   branch: main
-  base_url: https://mh-online-quran.vercel.app
-  auth_endpoint: api/auth
+  base_url: https://mh-online-quran.vercel.app/api
+  auth_endpoint: auth
   site_domain: mh-online-quran.vercel.app
 
 media_folder: "images/blog"
