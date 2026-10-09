@@ -26,8 +26,6 @@ export default async function handler(req, res) {
     });
     const data = await response.json();
     if (!response.ok || !data.access_token) throw new Error("GitHub did not return an access token.");
-    const payload = JSON.stringify({ token: data.access_token, provider: "github" });
-    const safePayload = escapeHtml(payload);
     res.setHeader("Cache-Control", "no-store");
     res.setHeader("Content-Type", "text/html; charset=utf-8");
     return res.status(200).send(`<!doctype html><html><head><meta charset="utf-8"><meta name="referrer" content="no-referrer"><title>GitHub sign-in</title></head><body><p>Connected. You can close this window.</p><script>if(window.opener){window.opener.postMessage("authorization:github:success:"+JSON.stringify({token:${JSON.stringify(data.access_token)},provider:"github"}), "https://mh-online-quran.vercel.app");window.close();}</script></body></html>`);
