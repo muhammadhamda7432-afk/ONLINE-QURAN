@@ -1,0 +1,32 @@
+backend:
+  name: github
+  repo: muhammadhamda7432-afk/ONLINE-QURAN
+  branch: main
+  base_url: https://mh-online-quran.vercel.app
+  auth_endpoint: api/auth
+  site_domain: mh-online-quran.vercel.app
+
+media_folder: "images/blog"
+public_folder: "/images/blog"
+
+publish_mode: editorial_workflow
+
+collections:
+  - name: "blog_posts"
+    label: "Blog Posts"
+    label_singular: "Blog Post"
+    folder: "posts"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    summary: "{{title}} — {{date}}"
+    sortable_fields: ["date", "title"]
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "URL Slug", name: "slug", widget: "string", hint: "Use lowercase words separated by hyphens, e.g. learn-quran-online" }
+      - { label: "Publish Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Short Description", name: "description", widget: "text" }
+      - { label: "Featured Image", name: "image", widget: "image", required: false }
+      - { label: "Article", name: "body", widget: "markdown" }
