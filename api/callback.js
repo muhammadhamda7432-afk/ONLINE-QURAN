@@ -12,7 +12,7 @@ export default async function handler(req, res) {
   const stateCookie = cookieHeader.split(";").map(x => x.trim()).find(x => x.startsWith("blog_oauth_state="));
   const savedState = stateCookie ? stateCookie.slice("blog_oauth_state=".length) : "";
   res.setHeader("Set-Cookie", "blog_oauth_state=; HttpOnly; SameSite=Lax; Path=/api; Max-Age=0; Secure");
-  if (!code || !state || !savedState || !crypto.timingSafeEqual(Buffer.from(state), Buffer.from(savedState))) {
+  if (!code || !state || !savedState || state.length !== savedState.length || !crypto.timingSafeEqual(Buffer.from(state), Buffer.from(savedState))) {
     return res.status(400).send("OAuth verification failed. Close this window and try signing in again.");
   }
   const clientId = process.env.OAUTH_GITHUB_CLIENT_ID;
